@@ -1,6 +1,7 @@
 const express = require("express");
 const userData = require("../../models/userModel");
 const loginData = require("../../models/loginModel");
+const requestData = require("../../models/requestModel");
 const userRouter = express.Router();
 
 
@@ -109,5 +110,100 @@ userRouter.get('/delete_profile/:id', async (req, res) => {
       });
     }
 })
+
+userRouter.post('/make_request', async (req, res) => {
+  try {
+    const data = {
+      login_id:req.body.login_id,
+      editor_login_id:req.body.editor_login_id,
+      video_url:req.body.video_url,
+      description:req.body.description,
+      status:'pending'
+    }
+
+    const requestData = await requestData(data)
+
+    if (requestData) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Message: 'Video uploaded successfully',
+      });
+    } else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed while uploading video',
+      });
+    }
+  } catch (error) {
+    return res.json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+
+
+
+
+})
+
+userRouter.get('/delete_request/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const requestDatas = await requestData.deleteOne({ _id: id });
+    if (requestDatas.deletedCount == 1) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Message: 'Request has been deleted',
+      });
+    }
+    else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed while deleting request',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+})
+
+userRouter.get('/view_user_added_request/:login_id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const requestDatas = await requestData.find({ login_id: id });
+    if (requestDatas) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Data: requestDatas,
+        Message: 'Request has been fetched',
+      });
+    }
+    else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed while fetching request',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+})
+
+
 
 module.exports = userRouter;
