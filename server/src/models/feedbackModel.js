@@ -6,6 +6,6 @@ const feedbackSchema = new mongoose.Schema({
   feedback: { type: String, require: true },
 });
 
-var feedbackData = mongoose.model('user_tb', feedbackSchema);
+var feedbackData = mongoose.model('feedback_tb', feedbackSchema);
 
 module.exports = feedbackData;
