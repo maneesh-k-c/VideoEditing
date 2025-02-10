@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const registerRouter = require('./src/routes/api/registerRouter');
 const userRouter = require('./src/routes/api/userRouter');
 const feedbackRouter = require('./src/routes/api/feedbackRouter');
+const editorRouter = require('./src/routes/api/editorRouter');
+const chatRouter = require('./src/routes/api/chatRouter');
 require('dotenv').config();
 
 app.use(express.static('./public'))
@@ -20,6 +22,8 @@ app.get('/', (req, res) => {
 app.use('/api/register',registerRouter);
 app.use('/api/user',userRouter);
 app.use('/api/feedback',feedbackRouter);
+app.use('/api/editor',editorRouter);
+app.use('/api/chat',chatRouter);
 
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
