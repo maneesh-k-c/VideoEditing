@@ -47,7 +47,7 @@ export default function MyWorks() {
 
         // File validation
         if (!formData.content_url) {
-            errorMessages.content_url = 'File is required';
+            errors.content_url = 'File is required';
             isValid = false;
         }
 
@@ -78,20 +78,17 @@ export default function MyWorks() {
         }
 
         try {
-            const response = await axios.post(
-                "http://localhost:5000/api/user/upload_output",
-                formDataToSend,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                }
-            );
-            if (response) {
+            axios.post('http://localhost:5000/api/user/upload_output', formDataToSend).then((res) => {
                 toast("Output Uploaded Successfully");
                 setFile(null);
                 setDescription("");
-            }
+            }).catch((err) => {
+                console.log(err);
+                
+                toast.error(err.response.data.message);
+            })
+            
+                    
 
 
 
@@ -142,7 +139,15 @@ export default function MyWorks() {
                 </div>
                 <div className="container">
                     <div className="row justify-content-center">
-
+                        {!media[0] ?
+                            <>
+                                <div style={{ paddingBottom: '100px' }}>
+                                    <h1 className="text-center">No Committed Works!</h1><br />
+                                    <p style={{ color: 'black' }}>be patient you will get what you deserve</p>
+                                </div>
+                            </>
+                            :
+                            ''}
                         {sendOut == true ?
                             <div className="col-md-10">
                                 <div className="card-container">
@@ -161,33 +166,14 @@ export default function MyWorks() {
                                                                     {errors.file}
                                                                 </div>
                                                             )}
-                                                            <label
-                                                                htmlFor="fileInput"
-                                                                style={{
-                                                                    display: "block",
-                                                                    width: "100%",
-                                                                    height: "50px",
-                                                                    marginBottom: "25px",
-                                                                    paddingLeft: "25px",
-                                                                    backgroundColor: "#ffffff",
-                                                                    color: "#101010",
-                                                                    borderRadius: "50px",
-                                                                    lineHeight: "50px",
-                                                                    textAlign: "left",
-                                                                    cursor: "pointer",
-                                                                    border: "none",
-                                                                    outline: "none",
-                                                                }}
-                                                            >
-                                                                Upload Output
-                                                            </label>
-
+                                                           
                                                             <input
-                                                                id="fileInput"
+                                                                
                                                                 type="file"
+                                                    
                                                                 accept="video/*,image/*"
                                                                 name="content_url"
-                                                                style={{ display: "none" }}
+                                                               
                                                                 onChange={handleFileChange}
                                                             />
 

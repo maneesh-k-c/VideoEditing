@@ -102,7 +102,7 @@ export default function MediaStatus() {
 
                                                                     <div class="btn btn-card outline" onClick={() => { navigate(`/chat/${req.editor_login_id}`) }}>chat</div>
                                                                     {req.output[0]?.status=="completed" ? 
-                                                                    <div class="btn btn-card outline" onClick={() => { navigate(`/request/${req._id}`) }}>output</div>:''
+                                                                    <div class="btn btn-card outline" onClick={() => { navigate(`/request/${req.request_id}`) }}>output</div>:''
                                                                 }
 
 

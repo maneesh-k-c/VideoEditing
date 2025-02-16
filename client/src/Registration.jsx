@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 export default function Registration() {
     const navigate = useNavigate()
     const [type, setType] = useState(true); // Toggle between user and editor forms
-    const [userdata, setUserdata] = useState({ name: '', email: '', mobile: '', username: '', password: '' });
-    const [editordata, setEditordata] = useState({ name: '', email: '', mobile: '', qualification: '', username: '', password: '' });
+    const [userdata, setUserdata] = useState({ name: '', email: '', mobile: '', username: '', password: '', image: '' });
+    const [editordata, setEditordata] = useState({ name: '', email: '', mobile: '', qualification: '', username: '', password: '',image:'' });
     const [userErrors, setUserErrors] = useState({});
     const [editorErrors, setEditorErrors] = useState({});
 
@@ -26,6 +26,7 @@ export default function Registration() {
         const newErrors = {};
 
         if (!currentData.name) newErrors.name = 'Name is required';
+        if (!currentData.image) newErrors.image = 'Image is required';
         if (!currentData.email || !/\S+@\S+\.\S+/.test(currentData.email)) newErrors.email = 'Valid email is required';
         if (!currentData.mobile || !/^\d{10}$/.test(currentData.mobile)) newErrors.mobile = 'Valid 10-digit mobile number is required';
         if (!currentData.username) newErrors.username = 'Username is required';
@@ -40,16 +41,26 @@ export default function Registration() {
         } else {
             setEditorErrors(newErrors);
         }
+console.log(newErrors);
 
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = (e, formType) => {
+        
         e.preventDefault();
         if (validateForm(formType)) {
+            console.log(formType);
             if (formType === 'user') {
+                const formDataToSend = new FormData();
+                formDataToSend.append('name', userdata.name);
+                formDataToSend.append('email', userdata.email);
+                formDataToSend.append('mobile', userdata.mobile);
+                formDataToSend.append('username', userdata.username);
+                formDataToSend.append('password', userdata.password);
+                formDataToSend.append('image', userdata.image);
 
-                axios.post('http://localhost:5000/api/register/user', userdata).then((res) => {
+                axios.post('http://localhost:5000/api/register/user', formDataToSend).then((res) => {
                     console.log(res);
                     toast.success(res.data.Message);
                     setTimeout(() => {
@@ -58,12 +69,22 @@ export default function Registration() {
 
                 }).catch((err) => {
                     console.log(err);
-                    
+
                     toast.error(err.response.data.Message);
                 })
 
             } else {
-                axios.post('http://localhost:5000/api/register/editor', editordata).then((res) => {
+                console.log(editordata);
+                
+                const formDataToSend = new FormData();
+                formDataToSend.append('name', editordata.name);
+                formDataToSend.append('email', editordata.email);
+                formDataToSend.append('mobile', editordata.mobile);
+                formDataToSend.append('qualification', editordata.qualification);
+                formDataToSend.append('username', editordata.username);
+                formDataToSend.append('password', editordata.password);
+                formDataToSend.append('image', editordata.image);
+                axios.post('http://localhost:5000/api/register/editor', formDataToSend).then((res) => {
                     console.log(res);
                     toast.success(res.data.Message);
                     setTimeout(() => {
@@ -72,16 +93,31 @@ export default function Registration() {
 
                 }).catch((err) => {
                     console.log(err);
-                    
+
                     toast.error(err.response.data.Message);
                 })
             }
         }
     };
 
+    const handlerestFileChange = (e) => {
+        const { name, files } = e.target;
+        setUserdata({
+            ...userdata,
+            [name]: files[0] || '',
+        });
+    };
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+        setEditordata({
+            ...editordata,
+            [name]: files[0] || '',
+        });
+    };
+
     return (
         <>
-        <Toaster />
+            <Toaster />
             <section className="contact_section layout_padding" style={{ height: '100vh' }}>
                 <div className="container d-flex ">
                     <div style={{ width: '44%', textAlign: 'center' }}>
@@ -135,6 +171,15 @@ export default function Registration() {
                                             />
                                         </div>
                                         <div className='col-lg-12'>
+                                            {userErrors.image && <p className="error" style={{ color: 'red', marginBottom: '0px' }}>{userErrors.image}</p>}
+                                            <input
+                                                type="file"
+                                                onClick={() => setUserErrors({ ...userErrors, image: '' })}
+                                                name="image"
+                                                onChange={handlerestFileChange}
+                                            />
+                                        </div>
+                                        <div className='col-lg-12'>
                                             {userErrors.username && <p className="error" style={{ color: 'red', marginBottom: '0px' }}>{userErrors.username}</p>}
                                             <input
                                                 type="text"
@@ -160,7 +205,7 @@ export default function Registration() {
                                     <div className="d-flex">
                                         <button type="submit">REGISTER</button>
                                     </div>
-                                    <div className='d-flex justify-content-center mt-2' style={{color:'black'}}>
+                                    <div className='d-flex justify-content-center mt-2' style={{ color: 'black' }}>
                                         <p>Already have an account? <a href='/login'>Login</a></p>
                                     </div>
                                 </form>
@@ -231,6 +276,15 @@ export default function Registration() {
                                             />
                                         </div>
                                         <div className='col-lg-12'>
+                                            {editorErrors.image && <p className="error" style={{ color: 'red', marginBottom: '0px' }}>{userErrors.image}</p>}
+                                            <input
+                                                type="file"
+                                                onClick={() => setEditorErrors({ ...editorErrors, image: '' })}
+                                                name="image"
+                                                onChange={handleFileChange}
+                                            />
+                                        </div>
+                                        <div className='col-lg-12'>
                                             {editorErrors.username && <p className="error" style={{ color: 'red', marginBottom: '0px' }}>{editorErrors.username}</p>}
                                             <input
                                                 type="text"
@@ -256,7 +310,7 @@ export default function Registration() {
                                     <div className="d-flex">
                                         <button type="submit">REGISTER</button>
                                     </div>
-                                    <div className='d-flex justify-content-center mt-2' style={{color:'black'}}>
+                                    <div className='d-flex justify-content-center mt-2' style={{ color: 'black' }}>
                                         <p>Already have an account? <a href='/login'>Login</a></p>
                                     </div>
                                 </form>

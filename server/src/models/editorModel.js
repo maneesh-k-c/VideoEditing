@@ -6,6 +6,7 @@ const editorSchema = new mongoose.Schema({
   mobile: { type: String, require: true },
   email: { type: String, require: true },
   qualification: { type: String, require: true },
+  image: { type: [String], require: true },
 });
 
 var editorData = mongoose.model('editor_tb', editorSchema);

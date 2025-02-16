@@ -3,11 +3,28 @@ const loginData = require('../../models/loginModel');
 const userData = require('../../models/userModel');
 const editorData = require('../../models/editorModel');
 const registerRouter = express.Router();
+const multer = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
+require('dotenv').config();
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_KEY,
+    api_secret: process.env.CLOUD_SECRET,
+});
+const storageImage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'FoodDonation',
+    },
+});
+const uploadImage = multer({ storage: storageImage });
+
 
 // user role 1
 // editor role 2
 
-registerRouter.post('/user', async (req, res, next) => {
+registerRouter.post('/user',uploadImage.array('image', 1), async (req, res, next) => {
     try {
 
         const oldEmail = await loginData.findOne({ username: req.body.username });
@@ -31,18 +48,19 @@ registerRouter.post('/user', async (req, res, next) => {
         let log = {
             username: req.body.username,
             password: req.body.password,
-            role: 'user',
-            status: 'pending'
+            role: 'user',   
+            status: 'approved'
         };
 
         console.log(log);
         const result = await loginData(log).save();
-        console.log(result);
+        console.log(result);    
         let reg = {
             login_id: result._id,
             name: req.body.name,
             mobile: req.body.mobile,
-            email: req.body.email
+            email: req.body.email,
+            image: req.files.map((file) => file.path)
         };
         const result2 = await userData(reg).save();
 
@@ -70,7 +88,7 @@ registerRouter.post('/user', async (req, res, next) => {
 });
 
 
-registerRouter.post('/editor', async (req, res, next) => {
+registerRouter.post('/editor',uploadImage.array('image', 1), async (req, res, next) => {
     try {
         const oldEmail = await loginData.findOne({ username: req.body.username });
         if (oldEmail) {
@@ -104,6 +122,7 @@ registerRouter.post('/editor', async (req, res, next) => {
             mobile: req.body.mobile,
             email: req.body.email,
             qualification: req.body.qualification,
+            image: req.files.map((file) => file.path)       
         };
         const result2 = await editorData(reg).save();
 

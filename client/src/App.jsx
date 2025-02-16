@@ -16,6 +16,7 @@ import About from './About'
 import ManageMedia from './admin/ManageMedia'
 import ManageClients from './admin/ManageClients'
 import ManageEditor from './admin/ManageEditor'
+import OutPut from './user/OutPut'
 
 function App() {
 
@@ -40,8 +41,9 @@ function App() {
     <Route path='/manage-media' element={<ManageMedia/>}/>
     <Route path='/manage-clients' element={<ManageClients/>}/>
     <Route path='/manage-editors' element={<ManageEditor/>}/>
+    <Route path='/request/:id' element={<OutPut/>}/>
    
-   </Routes>
+   </Routes>    
    </BrowserRouter>
   )
 }

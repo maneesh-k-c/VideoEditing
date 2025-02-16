@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, require: true },
   mobile: { type: String, require: true },
   email: { type: String, require: true },
+  image: { type: [String], require: true },
 });
 
 var userData = mongoose.model('user_tb', userSchema);

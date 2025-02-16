@@ -468,6 +468,34 @@ userRouter.get('/view_pending_approval_request/:id', async (req, res) => {
   }
 })
 
+userRouter.get('/view_out/:id', async (req, res) => {
+  try {
+
+    const requestDatas = await outputData.find({request_id:req.params.id})
+    if (requestDatas) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Data: requestDatas,
+        Message: 'Request has been fetched',
+      });
+    }   
+    else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed while fetching request',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+})
+
 userRouter.get('/user_accept_request/:request_id/:editor_id/:id', async (req, res) => {
   try {
     const { request_id, editor_id, id } = req.params;

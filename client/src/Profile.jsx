@@ -45,7 +45,7 @@ export default function Profile() {
                         <div className="carousel-item active">
                             <div className="box">
                                 <div className="img-box">
-                                    <img src="images/client.png" alt="" />
+                                <img src={profile?.image?profile?.image[0]:''} alt="" />
                                 </div>
                                 <div className="detail-box" >
                                     <h4>{profile?.name}</h4>
