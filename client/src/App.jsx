@@ -17,6 +17,7 @@ import ManageMedia from './admin/ManageMedia'
 import ManageClients from './admin/ManageClients'
 import ManageEditor from './admin/ManageEditor'
 import OutPut from './user/OutPut'
+import SingleEditor from './user/SingleEditor'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
     <Route path='/my-media-status/:id' element={<MediaStatus/>}/>
     <Route path='/profile' element={<Profile/>}/>
     <Route path='/chat/:id' element={<Chat/>}/>
+    <Route path='/single-editor/:id' element={<SingleEditor/>}/>
 
     {/* editor */}
     <Route path='/all-requests' element={<Requests/>}/>

@@ -6,6 +6,7 @@ const requestSchema = new mongoose.Schema({
   content_type: { type: String, require: true },
   content_url: { type: [String], require: true },
   description: { type: String, require: true },
+  payment:{ type: String},
   status: { type: String, require: true },
 });
 

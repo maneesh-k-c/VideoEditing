@@ -8,7 +8,7 @@ export default function Registration() {
     const navigate = useNavigate()
     const [type, setType] = useState(true); // Toggle between user and editor forms
     const [userdata, setUserdata] = useState({ name: '', email: '', mobile: '', username: '', password: '', image: '' });
-    const [editordata, setEditordata] = useState({ name: '', email: '', mobile: '', qualification: '', username: '', password: '',image:'' });
+    const [editordata, setEditordata] = useState({ name: '',upi:'', email: '', mobile: '', qualification: '', username: '', password: '',image:'' });
     const [userErrors, setUserErrors] = useState({});
     const [editorErrors, setEditorErrors] = useState({});
 
@@ -34,6 +34,9 @@ export default function Registration() {
 
         if (formType === 'editor' && !currentData.qualification) {
             newErrors.qualification = 'Qualification is required';
+        }
+        if (formType === 'editor' && !currentData.upi) {
+            newErrors.upi = 'Qualification is required';
         }
 
         if (formType === 'user') {
@@ -82,6 +85,7 @@ console.log(newErrors);
                 formDataToSend.append('mobile', editordata.mobile);
                 formDataToSend.append('qualification', editordata.qualification);
                 formDataToSend.append('username', editordata.username);
+                formDataToSend.append('upi', editordata.upi);
                 formDataToSend.append('password', editordata.password);
                 formDataToSend.append('image', editordata.image);
                 axios.post('http://localhost:5000/api/register/editor', formDataToSend).then((res) => {
@@ -272,6 +276,17 @@ console.log(newErrors);
                                                 name="qualification"
                                                 placeholder="Qualification"
                                                 value={editordata.qualification}
+                                                onChange={(e) => handleInputChange(e, 'editor')}
+                                            />
+                                        </div>
+                                        <div className='col-lg-6'>
+                                            {editorErrors.upi && <p className="error" style={{ color: 'red', marginBottom: '0px' }}>{editorErrors.upi}</p>}
+                                            <input
+                                                type="text"
+                                                onClick={() => setEditorErrors({ ...editorErrors, upi: '' })}
+                                                name="upi"
+                                                placeholder="Enter Upi" 
+                                                value={editordata.upi}
                                                 onChange={(e) => handleInputChange(e, 'editor')}
                                             />
                                         </div>

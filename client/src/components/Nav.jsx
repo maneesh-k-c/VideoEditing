@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 export default function Nav() {
@@ -10,6 +11,14 @@ export default function Nav() {
         localStorage.clear()
         navigate('/login')
     }
+    const [request, setRequest] = useState([])
+    console.log(request);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/editor/view_pending_request`).then((res) => {
+            setRequest(res.data.Data);
+        })
+    }, [])
     return (
         <header className="header_section">
             <div className="container-fluid">
@@ -60,10 +69,10 @@ export default function Nav() {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                            <a className="nav-link" onClick={() => { logout() }}>
-                                                Logout
-                                            </a>
-                                        </li>
+                                        <a className="nav-link" onClick={() => { logout() }}>
+                                            Logout
+                                        </a>
+                                    </li>
                                 </ul> :
                                 role == 'user' ?
 
@@ -107,9 +116,25 @@ export default function Nav() {
                                                 </a>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="/all-requests">
+                                                <a className="nav-link"style={{position:'relative'}}  href="/all-requests">
                                                     {" "}
-                                                    Requests
+                                                    Requests 
+                                                    {request.length>0 ?
+                                                    <span style={{
+                                                        position: 'absolute',
+                                                        top: '0',
+                                                        right: '0',
+                                                        backgroundColor: 'red',
+                                                        borderRadius: '50%',
+                                                        width: '23px',
+                                                        height:'23px',
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'end',
+                                                        padding: '0px',
+                                                    }}>{request?.length}</span> :''
+                                                }
+                                                    
                                                 </a>
                                             </li>
                                             <li className="nav-item">

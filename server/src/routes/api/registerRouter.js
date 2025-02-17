@@ -59,6 +59,7 @@ registerRouter.post('/user',uploadImage.array('image', 1), async (req, res, next
             login_id: result._id,
             name: req.body.name,
             mobile: req.body.mobile,
+            upi: req.body.upi,
             email: req.body.email,
             image: req.files.map((file) => file.path)
         };

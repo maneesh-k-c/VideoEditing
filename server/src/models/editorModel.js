@@ -5,6 +5,7 @@ const editorSchema = new mongoose.Schema({
   name: { type: String, require: true },
   mobile: { type: String, require: true },
   email: { type: String, require: true },
+  upi: { type: String, require: true },
   qualification: { type: String, require: true },
   image: { type: [String], require: true },
 });

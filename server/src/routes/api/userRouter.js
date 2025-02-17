@@ -468,6 +468,36 @@ userRouter.get('/view_pending_approval_request/:id', async (req, res) => {
   }
 })
 
+userRouter.get('/make/:id/:amount', async (req, res) => {     
+  try {               
+
+
+   const update = await requestData.updateOne({_id:req.params.id},{$set:{payment:req.params.amount}})
+   console.log(update);
+   
+   if (update.modifiedCount==1) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Message: 'Payment Completef',
+      });
+    }
+    else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed updating',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+})
+
 userRouter.get('/view_out/:id', async (req, res) => {
   try {
 
@@ -573,6 +603,62 @@ userRouter.get('/editor_view_my_works/:id', async (req, res) => {
         Message: 'Request has been fetched',
       });
     }
+    else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed while fetching request',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+})
+
+userRouter.get('/view-single-editor/:id', async (req, res) => {
+  try {
+
+    const requestDatas = await editorData.find({_id:req.params.id})
+    if (requestDatas) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Data: requestDatas,
+        Message: 'Request has been fetched',
+      });
+    }   
+    else {
+      return res.status(400).json({
+        Success: false,
+        Error: true,
+        Message: 'Failed while fetching request',
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      Success: false,
+      Error: true,
+      Message: 'Something went wrong',
+    });
+  }
+})
+
+userRouter.get('/view_out_editor/:id', async (req, res) => {
+  try {
+
+    const requestDatas = await outputData.find({editor_login_id:req.params.id})
+    if (requestDatas) {
+      return res.status(200).json({
+        Success: true,
+        Error: false,
+        Data: requestDatas,
+        Message: 'Request has been fetched',
+      });
+    }   
     else {
       return res.status(400).json({
         Success: false,

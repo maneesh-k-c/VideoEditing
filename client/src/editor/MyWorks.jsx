@@ -88,7 +88,7 @@ export default function MyWorks() {
                 toast.error(err.response.data.message);
             })
             
-                    
+
 
 
 
@@ -248,6 +248,11 @@ export default function MyWorks() {
                                                                 <p style={{ textTransform: 'lowercase' }}>{item.user.email}</p>
                                                                 <h5>Description</h5>
                                                                 <span style={{ textAlign: 'justify', display: 'block', fontFamily: 'Lato', }}>File Type : {item.content_type} <br />{item.description}</span>
+                                                               {item.payment?
+                                                               <>
+                                                                <h5>Payment</h5>
+                                                                <span style={{ textAlign: 'justify', display: 'block', fontFamily: 'Lato', }}>Amount paid : &nbsp; &#8377; {item.payment} received</span></> :''
+                                                            }
                                                             </div>
 
                                                         </div>
