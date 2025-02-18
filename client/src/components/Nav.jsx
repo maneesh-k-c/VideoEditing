@@ -11,6 +11,7 @@ export default function Nav() {
         localStorage.clear()
         navigate('/login')
     }
+
     const [request, setRequest] = useState([])
     console.log(request);
 
@@ -19,6 +20,7 @@ export default function Nav() {
             setRequest(res.data.Data);
         })
     }, [])
+    
     return (
         <header className="header_section">
             <div className="container-fluid">

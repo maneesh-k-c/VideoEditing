@@ -119,6 +119,24 @@ export default function MediaStatus() {
 
                                             <h5 style={{ margin: '10px' }}> Type : {media.content_type}</h5>
                                             <p>{media.description}</p>
+                                            <div
+                                                className="btn btn-card outline"
+                                                style={{width:'150px'}}
+                                                onClick={() => {
+                                                    if (media.content_url && media.content_url.length > 0) {
+                                                        const link = document.createElement("a");
+                                                        link.href = media.content_url[0]; // URL of the file
+                                                        link.download = media.content_url[0].split("/").pop(); // Extracts filename
+                                                        document.body.appendChild(link);
+                                                        link.click();
+                                                        document.body.removeChild(link);
+                                                    } else {
+                                                        alert("No file available for download.");
+                                                    }
+                                                }}
+                                            >
+                                                Download
+                                            </div>
                                         </div>
 
                                     </div>
@@ -138,6 +156,7 @@ export default function MediaStatus() {
                                                                         makePayment(req.request_id,req.editor._id),
                                                                         setUpi(req.editor.upi) 
                                                                         }}>Make Payment</div>
+                                                                        
 
                                                                 </div>
 
