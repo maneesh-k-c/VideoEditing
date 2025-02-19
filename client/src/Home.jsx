@@ -53,7 +53,7 @@ console.log(collection);
                             <div className="col-md-4">
                                 <div className="brand_box">
                                     <a href="">
-                                        <img src="images/logo.png" alt="" />
+                                        {/* <img src="images/logo.png" alt="" /> */}
                                     </a>
                                 </div>
                             </div>
@@ -87,11 +87,10 @@ console.log(collection);
                                             <div className="carousel-item active">
                                                 <div className="detail_box">
                                                     <h1 style={{color:'black'}}>
-                                                        CREATIVE <br />
-                                                        PHOTOGRAPHY
+                                                    Connect Edit <br /> Create
                                                     </h1>
                                                     <p style={{color:'black'}}>
-                                                        There are many variations of passages of Lorem Ipsum
+                                                        There are many variations of passages of creativity
                                                     </p>
                                                     <div className="btn-box">
                                                         <a href="" className="btn-1">
@@ -106,11 +105,10 @@ console.log(collection);
                                             <div className="carousel-item ">
                                                 <div className="detail_box">
                                                     <h1 style={{color:'black'}}>
-                                                        CREATIVE <br />
-                                                        PHOTOGRAPHY
+                                                    Your Video, Your Vision <br /> Our Editors
                                                     </h1>
                                                     <p style={{color:'black'}}>
-                                                        There are many variations of passages of Lorem Ipsum
+                                                        There are many variations of passages of creativity
                                                     </p>
                                                     <div className="btn-box">
                                                         <a href="" className="btn-1">
@@ -125,11 +123,10 @@ console.log(collection);
                                             <div className="carousel-item ">
                                                 <div className="detail_box">
                                                     <h1 style={{color:'black'}}>
-                                                        CREATIVE <br />
-                                                        PHOTOGRAPHY
+                                                    Find the Right Editor <br /> for Your Story
                                                     </h1>
                                                     <p style={{color:'black'}}>
-                                                        There are many variations of passages of Lorem Ipsum
+                                                        There are many variations of passages of Creativity
                                                     </p>
                                                     <div className="btn-box">
                                                         <a href="" className="btn-1">
@@ -195,11 +192,10 @@ console.log(collection);
                         </div>
                         <div className="detail-box">
                             <h2>About Our Studio</h2>
-                            <p>
-                                There are many variations of passages of Lorem Ipsum There are many
-                                variations of passages of Lorem Ipsum
+                            <p style={{color:'black'}}>
+                            Welcome to EDIFY, the platform that connects beginner video editors with clients looking for quality edits at affordable prices. Whether you're an aspiring editor building your portfolio or a client seeking creative video solutions, we make collaboration easy. Our mission is to bridge the gap between talent and opportunity, helping editors gain real-world experience while providing clients with multiple edited versions to choose from. Join us and bring your ideas to life!
                             </p>
-                            <a href="">Read More</a>
+                            {/* <a href="">Read More</a> */}
                         </div>
                     </div>
                 </div>

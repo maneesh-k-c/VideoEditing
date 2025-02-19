@@ -232,6 +232,7 @@ export default function MyWorks() {
                                                             <div class="card-banner-image"
                                                                 style={{ backgroundImage: `url(${item?.content_url[0]})` }}
                                                             > </div>
+                                                            
                                                         }
                                                         <div className="buttons-request col-lg-12 mt-4" style={{ display: "flex", justifyContent: "center" }}>
                                                             <div class="btn btn-card outline" style={{ width: "150px" }} onClick={() => { navigate(`/chat/${item.login_id}`) }}>chat</div>
@@ -254,6 +255,24 @@ export default function MyWorks() {
                                                                         <span style={{ textAlign: 'justify', display: 'block', fontFamily: 'Lato', }}>Amount paid : &nbsp; &#8377; {item.payment} received</span></> : ''
                                                                 }
                                                             </div>
+                                                            <div
+                                                className="btn btn-card outline"
+                                                style={{width:'150px'}}
+                                                onClick={() => {
+                                                    if (item.content_url && item.content_url.length > 0) {
+                                                        const link = document.createElement("a");
+                                                        link.href = item.content_url[0]; // URL of the file
+                                                        link.download = item.content_url[0].split("/").pop(); // Extracts filename
+                                                        document.body.appendChild(link);
+                                                        link.click();
+                                                        document.body.removeChild(link);
+                                                    } else {
+                                                        alert("No file available for download.");
+                                                    }
+                                                }}
+                                            >
+                                                Download
+                                            </div>
 
                                                         </div>
                                                     </div>

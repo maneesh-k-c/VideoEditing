@@ -26,7 +26,7 @@ export default function Nav() {
             <div className="container-fluid">
                 <nav className="navbar navbar-expand-lg custom_nav-container ">
                     <a href="index.html" className="navbar-brand">
-                        <img src="images/logo-black.png" alt="" />
+                        {/* <img src="images/logo-black.png" alt="" /> */}
                     </a>
                     <button
                         className="navbar-toggler ml-auto"
