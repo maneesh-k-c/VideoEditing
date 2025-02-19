@@ -224,7 +224,7 @@ export default function MediaStatus() {
                                         <div className="modal-body text-center p-4">
                                             <form>
                                                 <div className="form-group mb-3">
-                                                    <label htmlFor="donations" className="form-label fw-bold">Enter Amount</label>
+                                                    <label htmlFor="donations" style={{color:'black'}} className="form-label fw-bold">Enter Amount</label>
                                                     <input
                                                         type="number"
                                                         className="form-control"
