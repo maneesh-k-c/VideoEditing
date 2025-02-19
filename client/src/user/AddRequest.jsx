@@ -22,7 +22,7 @@ export default function AddRequest() {
         const { name, files } = e.target;
         setFormData({
             ...formData,
-            [name]: files[0] || '', 
+            [name]: files[0] || '',
         });
     };
 
@@ -64,13 +64,13 @@ export default function AddRequest() {
             formDataToSend.append('message', formData.message);
             for (let [key, value] of formDataToSend.entries()) {
                 console.log(key, value);
-              }
+            }
             axios.post('http://localhost:5000/api/user/make_request', formDataToSend).then((res) => {
                 toast.success(res.data.Message);
 
             }).catch((err) => {
                 console.log(err);
-                
+
                 toast.error(err.response.data.message);
             })
         } else {
@@ -81,8 +81,11 @@ export default function AddRequest() {
     return (
         <>
             <Nav />
-          
-            <Toaster />
+
+            <Toaster
+                position="bottom-center"
+                reverseOrder={false}
+            />
             <section className="contact_section layout_padding">
                 <div className="container text-center">
                     <div className="">
@@ -123,35 +126,14 @@ export default function AddRequest() {
                                     {errors.content_url && (
                                         <span style={{ color: 'red' }}>{errors.content_url}</span>
                                     )}
-                                    <label
-                                        htmlFor="fileInput"
-                                        style={{
-                                            display: 'block',
-                                            width: '100%',
-                                            height: '50px',
-                                            marginBottom: '25px',
-                                            paddingLeft: '25px',
-                                            backgroundColor: '#ffffff',
-                                            color: '#101010',
-                                            borderRadius: '50px',
-                                            lineHeight: '50px',
-                                            textAlign: 'left',
-                                            cursor: 'pointer',
-                                            border: 'none',
-                                            outline: 'none'
-                                        }}
-                                    >
-                                        Choose File
-                                    </label>
+                                   
                                     <input
                                         id="fileInput"
                                         type="file"
                                         accept="video/*,image/*"
                                         name="content_url"
                                         onChange={handleFileChange}
-                                        style={{
-                                            display: 'none' // Hide the default file input
-                                        }}
+                                       
                                     />
                                 </div>
                                 <div>
