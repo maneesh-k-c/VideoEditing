@@ -120,6 +120,7 @@ registerRouter.post('/editor',uploadImage.array('image', 1), async (req, res, ne
         let reg = {
             login_id: result._id,
             name: req.body.name,
+            upi: req.body.upi,
             mobile: req.body.mobile,
             email: req.body.email,
             qualification: req.body.qualification,

@@ -103,11 +103,11 @@ export default function Login() {
                                 <img src="images/contact-img.png" alt="Contact" />
                                 <div className="img_overlay">
                                     <h2>
-                                        Best <br />
-                                        Photo <br />
-                                        Studio
+                                        Connect <br />
+                                        Edit <br />
+                                        Create
                                     </h2>
-                                    <a href="#">Contact Us</a>
+                                   
                                 </div>
                             </div>
                         </div>

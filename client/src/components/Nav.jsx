@@ -141,7 +141,7 @@ export default function Nav() {
                                             </li>
                                             <li className="nav-item">
                                                 <a className="nav-link" href="/my-works">
-                                                    My Worsks{" "}
+                                                    My Works{" "}
                                                 </a>
                                             </li>
                                             <li className="nav-item">

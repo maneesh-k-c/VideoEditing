@@ -219,11 +219,11 @@ console.log(newErrors);
                                     <img src="images/contact-img.png" alt="" />
                                     <div className="img_overlay">
                                         <h2>
-                                            Best <br />
-                                            Photo <br />
-                                            studio
+                                            Connect <br />
+                                            Edit <br />
+                                            Create
                                         </h2>
-                                        <a href="">Contact Us</a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -335,11 +335,11 @@ console.log(newErrors);
                                     <img src="images/contact-img.png" alt="" />
                                     <div className="img_overlay">
                                         <h2>
-                                            Best <br />
-                                            Photo <br />
-                                            studio
+                                            Connect <br />
+                                            Edit <br />
+                                            Create
                                         </h2>
-                                        <a href="">Contact Us</a>
+                                        
                                     </div>
                                 </div>
                             </div>

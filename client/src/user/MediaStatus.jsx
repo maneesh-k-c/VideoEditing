@@ -131,6 +131,7 @@ export default function MediaStatus() {
                                                     <>
                                                         {req.status === 'accepted' ?
                                                             <div class="request-banner row">
+                                                               
                                                                 <div className="details col-md-8" >
                                                                     <h5 onClick={() => navigate(`/single-editor/${req.editor._id}`)} style={{ margin: '10px', textTransform: 'uppercase' }}> Name : {req.editor.name}</h5>
                                                                     <p onClick={() => navigate(`/single-editor/${req.editor._id}`)} style={{ margin: '10px' }}> Mobile : {req.editor.mobile}</p>
