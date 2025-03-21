@@ -93,9 +93,9 @@ console.log(collection);
                                                         There are many variations of passages of creativity
                                                     </p>
                                                     <div className="btn-box">
-                                                        <a href="" className="btn-1">
+                                                        {/* <a href="" className="btn-1">
                                                             Contact
-                                                        </a>
+                                                        </a> */}
                                                         <a href="#aboutid" className="btn-2">
                                                             About Us
                                                         </a>
@@ -111,9 +111,9 @@ console.log(collection);
                                                         There are many variations of passages of creativity
                                                     </p>
                                                     <div className="btn-box">
-                                                        <a href="" className="btn-1">
+                                                        {/* <a href="" className="btn-1">
                                                             Contact
-                                                        </a>
+                                                        </a> */}
                                                         <a href="#aboutid" className="btn-2">
                                                             About Us
                                                         </a>
@@ -129,9 +129,9 @@ console.log(collection);
                                                         There are many variations of passages of Creativity
                                                     </p>
                                                     <div className="btn-box">
-                                                        <a href="" className="btn-1">
+                                                        {/* <a href="" className="btn-1">
                                                             Contact
-                                                        </a>
+                                                        </a> */}
                                                         <a href="#aboutid" className="btn-2">
                                                             About Us
                                                         </a>

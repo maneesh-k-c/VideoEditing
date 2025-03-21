@@ -30,8 +30,7 @@ export default function About() {
       <div className="detail-box">
         <h2>About Our Studio</h2>
         <p style={{color:'black'}}>
-          There are many variations of passages of Lorem Ipsum There are many
-          variations of passages of Lorem Ipsum
+        Welcome to EDIFY, the platform that connects beginner video editors with clients looking for quality edits at affordable prices. Whether you're an aspiring editor building your portfolio or a client seeking creative video solutions, we make collaboration easy. Our mission is to bridge the gap between talent and opportunity, helping editors gain real-world experience while providing clients with multiple edited versions to choose from. Join us and bring your ideas to life!
         </p>
         <a href="">Read More</a>
       </div>
