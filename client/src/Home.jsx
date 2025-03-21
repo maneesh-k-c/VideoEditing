@@ -96,7 +96,7 @@ console.log(collection);
                                                         <a href="" className="btn-1">
                                                             Contact
                                                         </a>
-                                                        <a href="" className="btn-2">
+                                                        <a href="#aboutid" className="btn-2">
                                                             About Us
                                                         </a>
                                                     </div>
@@ -114,7 +114,7 @@ console.log(collection);
                                                         <a href="" className="btn-1">
                                                             Contact
                                                         </a>
-                                                        <a href="" className="btn-2">
+                                                        <a href="#aboutid" className="btn-2">
                                                             About Us
                                                         </a>
                                                     </div>
@@ -132,7 +132,7 @@ console.log(collection);
                                                         <a href="" className="btn-1">
                                                             Contact
                                                         </a>
-                                                        <a href="" className="btn-2">
+                                                        <a href="#aboutid" className="btn-2">
                                                             About Us
                                                         </a>
                                                     </div>
@@ -179,7 +179,7 @@ console.log(collection);
                 {/* end slider section */}
             </div>
             {/* about section */}
-            <section className="about_section layout_padding">
+            <section className="about_section layout_padding" id='aboutid'>
                 <div className="container-fluid">
                     <div className="box">
                         <div className="img_container">
@@ -191,7 +191,7 @@ console.log(collection);
                             </div>
                         </div>
                         <div className="detail-box">
-                            <h2>About Our Studio</h2>
+                            <h2>About Edify</h2>
                             <p style={{color:'black'}}>
                             Welcome to EDIFY, the platform that connects beginner video editors with clients looking for quality edits at affordable prices. Whether you're an aspiring editor building your portfolio or a client seeking creative video solutions, we make collaboration easy. Our mission is to bridge the gap between talent and opportunity, helping editors gain real-world experience while providing clients with multiple edited versions to choose from. Join us and bring your ideas to life!
                             </p>
@@ -202,7 +202,7 @@ console.log(collection);
             </section>
             {/* end about section */}
             {/* portfolio section */}
-            <section className="portfolio_section layout_padding-top">
+            {/* <section className="portfolio_section layout_padding-top">
                 <div className="container">
                     <div className="heading_container">
                         <h2>Our Portfolio</h2>
@@ -222,7 +222,7 @@ console.log(collection);
                         </div>
                     ))}
                 </Slider>
-            </section>
+            </section> */}
             {/* end portfolio section */}
             {/* quality section */}
             <section className="quality_section layout_padding">
@@ -262,43 +262,33 @@ console.log(collection);
             <section className="news_section layout_padding">
                 <div className="container">
                     <div className="heading_container">
-                        <h2>Letest News</h2>
-                        <p>Lorem Ipsum available, but the majority</p>
+                       
                     </div>
                     <div className="row">
                         <div className="col-md-6">
                             <div className="box">
+                                
                                 <div className="img-box">
-                                    <img src="images/n-1.jpg" alt="" />
+                                   
                                     <div className="date">
-                                        <h5>06 Feb 2020</h5>
+                                        
                                     </div>
                                 </div>
                                 <div className="detail-box">
-                                    <h5>Teration in some form, by injected humour</h5>
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available,
-                                        but the majority have suffered alteration in some form, by
-                                        injected humour, or randomised
-                                    </p>
+                                   
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="box">
                                 <div className="img-box">
-                                    <img src="images/n-2.jpg" alt="" />
+                                   
                                     <div className="date">
-                                        <h5>06 Feb 2020</h5>
+                                        
                                     </div>
                                 </div>
                                 <div className="detail-box">
-                                    <h5>Teration in some form, by injected humour</h5>
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available,
-                                        but the majority have suffered alteration in some form, by
-                                        injected humour, or randomised
-                                    </p>
+                                    
                                 </div>
                             </div>
                         </div>
